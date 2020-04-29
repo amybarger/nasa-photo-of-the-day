@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import PhotoCard from "./photoCard";
 
 function NasaPhoto() {
     const [photo, setPhoto] = useState([])
@@ -17,7 +18,21 @@ function NasaPhoto() {
     }, []);
     console.log("NASA data", setPhoto);
     return (
-        <div>
+        <div className="photoOfTheDay">
+            {photo.map(photo => {
+                return (
+                    <PhotoCard 
+                    date={photo.date}
+                    explanation={photo.explanation}
+                    hdurl={photo.hdurl}
+                    media_type={photo.media_type}
+                    service_version={photo.service_version}
+                    title={photo.title}
+                    url={photo.url}
+
+                    />
+                )
+            })}
 
         </div>
     )
