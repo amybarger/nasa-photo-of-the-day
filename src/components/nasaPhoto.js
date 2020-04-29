@@ -24,14 +24,14 @@ function NasaPhoto() {
                     <PhotoCard 
                     date={photo.date}
                     explanation={photo.explanation}
-                    hdurl={photo.hdurl}
+                    image={photo.hdurl}
                     media_type={photo.media_type}
                     service_version={photo.service_version}
                     title={photo.title}
                     url={photo.url}
 
                     />
-                )
+                );
             })}
 
         </div>
