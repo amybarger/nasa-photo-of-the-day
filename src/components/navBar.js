@@ -1,44 +1,60 @@
-// import React from "react";
-
-// function NavBar() {
-//     return (
-// <div className="navbar">
-//     <a href>link</a>
-//     <a href>link</a>
-//     <a href>link</a>
-//     <a href>link</a>
-// </div>
-//     );
-// }
-
-
-
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
+} from 'reactstrap';
 
-const NavBar = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
+const TheNavBar = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/"><h1>🚀 NASA Photo of the Day! 🚀</h1></NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="https://www.nasa.gov/">Learn About NASA</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink href="https://api.nasa.gov/">NASA APIs</NavLink>
             </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Where to?
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                  To infinity
+                </DropdownItem>
+                <DropdownItem>
+                  and beyond
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  Reset
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
+          <NavbarText>by Amy Barger</NavbarText>
         </Collapse>
       </Navbar>
     </div>
   );
 }
 
-export default NavBar;
+export default TheNavBar;

@@ -1,16 +1,23 @@
-import React from "react";
+import React from 'react';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle,
+} from 'reactstrap';
 
-const PhotoCard = props => {
-    return (
-        <div className="photo-card" key={props.date}>
-            <h2>Date: {props.date}</h2>
-            <p>{props.explanation}</p>
-            <img src={props.image} alt="NASA photo of the day"></img>
-            <p>{props.media_type}</p>
-            <p>{props.service_version}</p>
+const PhotoCard = (props) => {
+  return (
+    <div>
+      <Card>
+        <CardImg width="100%" src={props.image} alt="NASA photo of the day" />
 
-        </div>
-    )
-}
+        <CardBody>
+          <CardTitle>{props.title}</CardTitle>
+          <CardSubtitle>{props.date}</CardSubtitle>
+          <CardText>{props.explanation}</CardText>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
 
 export default PhotoCard;
